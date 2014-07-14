@@ -1,12 +1,18 @@
 var Bunyan = require("bunyan")
+var path = require("path")
 
 module.exports = function(plasma, dna){
-  var bunyan = Bunyan.createLogger(this.referenceBunyanStreams(dna.bunyan || {}))
-  plasma.on(dna.reactOn, function(c){
-    if(c.method == "log")
-      c.method = "info"
-    bunyan[c.method].apply(bunyan, c.arguments)
-  })
+  var bunyan
+  if(!dna.bunyanInit)
+    bunyan = Bunyan.createLogger(this.referenceBunyanStreams(dna.bunyan || {}))
+  else
+    bunyan = require(path.join(process.cwd(),dna.bunyanInit))(plasma, dna)
+  if(dna.reactOn)
+    plasma.on(dna.reactOn, function(c){
+      if(c.method == "log")
+        c.method = "info"
+      bunyan[c.method].apply(bunyan, c.arguments)
+    })
 }
 
 module.exports.prototype.referenceBunyanStreams = function(options) {

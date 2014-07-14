@@ -19,7 +19,14 @@ Note: Chemicals with `method` property having value of `log` invoke `info` metho
       "reactOn": String,
       "bunyan": {
         // ... bunyan options
-      }
+      },
+      "bunyanInit": "process/cwd/relative/path/to/init/script.js" // optional
     }
 
 Note: bunyan options `stream` & `streams[ {stream: value} ]` having string values `process.stdout` or `process.stderr` are referenced as respective `process` object streams.
+
+### bunyanInit script 
+
+    module.exports = function(plasma, dna) {
+      return require("bunyan").createLogger(/* ... */)
+    }

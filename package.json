@@ -1,6 +1,6 @@
 {
   "name": "organic-bunyan-output",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Organelle which captures chemicals and transforms them to bunyan method calls",
   "main": "index.js",
   "scripts": {
