@@ -1,0 +1,25 @@
+{
+  "name": "organic-bunyan-output",
+  "version": "0.0.1",
+  "description": "Organelle which captures chemicals and transforms them to bunyan method calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "bunyan": "~0.23.1"
+  },
+  "author": "Boris Filipov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/outbounder/organic-bunyan-output.git"
+  },
+  "bugs": {
+    "url": "https://github.com/outbounder/organic-bunyan-output/issues"
+  },
+  "homepage": "https://github.com/outbounder/organic-bunyan-output",
+  "devDependencies": {
+    "organic": "~0.1.1"
+  }
+}
