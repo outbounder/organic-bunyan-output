@@ -1,4 +1,4 @@
-# oragnic-console-bunyan-output
+# oragnic-bunyan-output
 
 Organelle which captures chemicals and transforms them to [bunyan](https://github.com/trentm/node-bunyan) method calls.
 
