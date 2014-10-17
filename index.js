@@ -5,8 +5,15 @@ module.exports = function(plasma, dna){
   var bunyan
   if(!dna.bunyanInit)
     bunyan = Bunyan.createLogger(this.referenceBunyanStreams(dna.bunyan || {}))
-  else
-    bunyan = require(path.join(process.cwd(),dna.bunyanInit))(plasma, dna)
+  else {
+    var fn = require(path.join(process.cwd(),dna.bunyanInit))
+    if(fn.length == 2)
+      bunyan = fn(plasma, dna)
+    else
+      fn(plasma, dna, function(err, result){
+        bunyan = result
+      })
+  }
   if(dna.reactOn)
     plasma.on(dna.reactOn, function(c){
       if(c.method == "log")

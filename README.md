@@ -25,8 +25,14 @@ Note: Chemicals with `method` property having value of `log` invoke `info` metho
 
 Note: bunyan options `stream` & `streams[ {stream: value} ]` having string values `process.stdout` or `process.stderr` are referenced as respective `process` object streams.
 
-### bunyanInit script 
+### sync bunyanInit script
 
     module.exports = function(plasma, dna) {
       return require("bunyan").createLogger(/* ... */)
+    }
+
+### async bunyanInit script
+
+    module.exports = function(plasma, dna, next) {
+      next(null, require("bunyan").createLogger(/* ... */) )
     }
